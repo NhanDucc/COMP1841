@@ -1,1 +1,4 @@
-# COMP1841
+## Installation
+```bash
+XAMPP: https://www.apachefriends.org/download.html
+```
