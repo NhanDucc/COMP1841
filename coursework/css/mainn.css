@@ -1,0 +1,881 @@
+html {
+    scroll-behavior: smooth;
+}
+/* Đổi màu nền của toàn bộ trang thành màu đen */
+body {
+    font-family: monospace;
+    background-color: lightgrey; /* Màu đen */
+    color: black; /* Màu chữ trắng */
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 0;
+}
+
+header {
+    background-color: #1c1e21;
+    color: white;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    padding: 10px 20px;
+}
+.header-container h1 {
+    margin-top: 28px;
+    font-size: 24px;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+}
+
+.header-container span {
+    margin-left: auto;
+    color: white;
+}
+
+.search-bar {
+    margin-right: 30rem; /* Đẩy search bar sang bên trái */
+}
+
+.search-bar input {
+    padding: 5px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 10px;
+    margin-bottom: 9px
+}
+
+nav{
+    width: 50%;
+    padding: 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+.user-pic{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-right: 20px;
+}
+.sub-menu-wrap{
+    position: absolute;
+    top: 110%;
+    right: 0%;
+    width: 320px;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.5s;
+}
+.sub-menu-wrap.open-menu{
+    max-height: 400px;
+}
+.sub-menu{
+    background: #1a1a1a;
+    padding: 15px;
+    margin: 10px;
+}
+.sub-menu::before{
+    content: "";
+    position: absolute;
+    top: 5px;
+    right: 42px;
+    width: 25px;
+    height: 25px;
+    background-color: black;
+    transform: rotate(45deg);
+}
+.user-info{
+    display: flex;
+    align-items: center;
+    color: white;
+}
+.user-info h3{
+    font-weight: 500;
+}
+.user-info img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+.sub-menu hr{
+    background: #fff;
+    border: 0;
+    height: 1px;
+    width: 100%;
+    margin: 15px 0 15px;
+}
+.sub-menu-link{
+    color: white;
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    margin: 10px;
+}
+.sub-menu-link p{
+    width: 100%;
+    font-size: 15px;
+}
+.sub-menu-link .icon{
+    margin-right: 15px;
+    padding: 1px;
+}
+.sub-menu-link span{
+    color: white;
+    font-size: 20px;
+    transition: transform 0.5s;
+}
+.sub-menu-link:hover span{
+    transform: translateX(5px);
+}
+.sub-menu-link:hover p{
+    font-size: 20px;
+}
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
+main h2{
+    font-size: 35px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+.user{
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+.question-show{
+    font-size: 25px;
+}
+.posted{
+    margin-left: 500px;
+}
+.post-question {
+    background-color: white;
+    padding: 2rem;
+    margin: 2rem;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    z-index: 1;
+}
+
+.post-question textarea {
+    width: calc(100% - 22px); /* Để giữ khoảng trống và viền */
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #1f1f1f; /* Màu viền tương tự bài post */
+    border-radius: 12px;
+    margin-bottom: 10px;
+    color: black; /* Màu chữ trắng */
+    background-color: white; /* Màu nền tương tự bài post */
+    z-index: 1;
+}
+.post-question label{
+    margin-left: 39%;
+}
+.post-question button{
+    margin-left: 45%;
+}
+#edit-question-form button{
+    margin-left: 43%;
+}
+message_textarea {
+    width: calc(100% - 22px); /* Để giữ khoảng trống và viền */
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #2d08bf; /* Màu viền tương tự bài post */
+    border-radius: 12px;
+    margin-bottom: 10px;
+    color: #ffffff; /* Màu chữ trắng */
+    background-color: #0a0707; /* Màu nền tương tự bài post */
+    z-index: 1;
+}
+textarea {
+    resize: none;
+  }
+
+.post-question label {
+    display: inline-block;
+    margin-bottom: 5px;
+    color: #ffffff; /* White text color */
+}
+
+.post-question input[type="file"] {
+    margin-bottom: 10px;
+}
+
+/* Danh sách câu hỏi */
+.questions-list {
+    margin-top: 20px;
+}
+
+.question {
+    background-color: white; /* Màu đen sáng hơn */
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.question h2 {
+    margin-top: 0;
+    font-size: 20px;
+    color: black; /* Màu chữ trắng */
+    text-transform: capitalize;
+}
+
+.question p {
+    margin-bottom: 15px;
+    color: black; /* Màu chữ xám */
+}
+
+/* Đảm bảo các ô đều giữ nguyên tỷ lệ hình ảnh */
+.image-item {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.image-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease; /* Hiệu ứng transition */
+}
+
+.image-item:hover img {
+    transform: scale(1.1); /* Phóng to hình ảnh lên 1.1 lần khi di chuột vào */
+}
+
+/* Style for single image display */
+.image-single {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.image-single img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease; /* Hiệu ứng transition */
+    margin-bottom: -3.9px;
+}
+
+.image-single:hover img {
+    transform: scale(1.1); /* Phóng to hình ảnh lên 1.1 lần khi di chuột vào */
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto; /* Căn giữa theo chiều ngang */
+}
+
+/* CSS cho modal */
+#myModal {
+    display: none; /* Mặc định ẩn modal */
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.7); /* Màu nền với độ mờ */
+}
+
+/* Hiệu ứng xuất hiện của modal */
+#myModal.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease-out; /* Sử dụng animation fadeIn */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; } /* Ẩn ban đầu */
+    to { opacity: 1; } /* Hiển thị dần */
+}
+
+/* CSS cho hình ảnh trong modal */
+#myModal .modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    animation: zoomIn 0.3s ease-out; /* Hiệu ứng zoom in */
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0); } /* Phóng to từ kích thước 0 */
+    to { transform: scale(1); } /* Phóng to đầy đủ */
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 50px; /* Increase font size */
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px; /* Add padding for larger click area */
+    background-color: rgba(0, 0, 0, 0.5); /* Add background color */
+    border-radius: 5px; /* Add rounded corners */
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.prev {
+    left: 20px;
+}
+
+.next {
+    right: 20px;
+}
+
+.prev:hover, .next:hover, .close:hover {
+    color: #ccc;
+    background-color: rgba(0, 0, 0, 0.7); /* Change background color on hover */
+}
+
+
+.question-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
+.question-actions a {
+    padding: 8px 12px;
+    background-color: #6667ab;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-right: 5px; /* Điều chỉnh khoảng cách giữa các liên kết */
+}
+
+.question-actions a:hover {
+    background-color: #4c4d81;
+    text-decoration: none;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+    width: 200px; /* Kích thước đều của hình vuông */
+    height: 200px; /* Kích thước đều của hình vuông */
+    overflow: hidden; /* Ẩn phần bị tràn ra ngoài */
+    border-radius: 10px; /* Bo góc ảnh thành hình tròn */
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-container button {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    color: white;
+    border: none;
+    background-color: #777; 
+    cursor: pointer;
+    padding: 0; 
+    opacity: 0.7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px; 
+    width: 30px; 
+    height: 30px; 
+    border-radius: 50%; 
+}
+
+.image-container button:hover {
+    background-color: rgba(198, 40, 40, 0.8); /* Màu nền khi di chuột vào nút Delete */
+    opacity: 1;
+}
+
+.image-count-overlay {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 2px 6px;
+    font-size: 12px;
+}
+
+/* Thiết kế phần chọn file và post câu hỏi giống nhau */
+.custom-file-input, button[type="submit"], button[type="button"] {
+    display: inline-block;
+    padding: 8px 20px;
+    cursor: pointer;
+    background-color: #6667ab; /* Màu nền tương tự nút "Post a Question" */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 10px; /* Để có khoảng cách với các phần khác */
+}
+.custom-file-input:hover, button[type="submit"]:hover, button[type="button"]:hover {
+    background-color: #4c4d81; /* Màu hover tương tự nút "Post a Question" */
+}
+
+.custom-file-input:active, button[type="submit"]:active, button[type="button"]:active {
+    background-color: #4c4d81; /* Màu active tương tự nút "Post a Question" */
+}
+
+.profile-section {
+    background-color: white;
+    padding: 2rem;
+    margin: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.post-section h2{
+    color: pink;
+}
+.form-group {
+    margin-bottom: 1rem;
+}
+label {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 0.5rem;
+}
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 97.5%;
+    padding: 0.5rem;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+button[type="submit"] {
+    padding: 0.5rem 1rem;
+    background-color: #6667ab;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 45%;
+}
+button[type="button"] {
+    padding: 0.5rem 1rem;
+    background-color: #6667ab;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 44.5%;
+}
+
+.form-group {
+    margin-bottom: 15px; /* Để có khoảng cách giữa các nhóm input */
+}
+
+.form-group.disabled input[type="text"] {
+    border: 1px solid #000; /* Đổi border thành đen khi disabled */
+    background-color: #000; /* Màu nền đen */
+    color: #fff; /* Màu chữ trắng */
+    cursor: not-allowed; /* Đổi con trỏ khi disabled */
+    padding: 8px; /* Để text không bị dính vào cạnh border */
+    box-sizing: border-box; /* Để padding không tăng kích thước của input */
+}
+
+.contact-info {
+    background-color: white;
+    padding: 2rem;
+    margin: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.contact-info label{
+    font-size: 20px;
+    margin-top: 10px;
+}
+.contact-info input[type="text"], input[type="email"]{
+    width: 97%;
+    padding: 10px;
+    border: 1px solid #1f1f1f;
+    border-radius: 4px;
+}
+.contact-info textarea{
+    width: 97%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #1f1f1f;
+    border-radius: 4px;
+}
+.contact-info input[type="submit"]{
+    padding: 10px 20px;
+    background-color: #6667ab;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-left: 40%;
+}
+.contact-info input[type="submit"]:hover{
+    background-color: #4c4d81;
+}
+/* Thiết lập cho thanh cuộn chung */
+::-webkit-scrollbar {
+    width: 8px; /* Độ rộng của thanh cuộn */
+    height: 8px; /* Độ cao của thanh cuộn (nếu cần) */
+}
+
+/* Thiết lập cho thanh cuộn trên nền màu đen */
+::-webkit-scrollbar-thumb {
+    background-color: #888; /* Màu của thanh cuộn */
+    border-radius: 4px; /* Độ cong của góc thanh cuộn */
+}
+
+/* Hiệu ứng hover cho thanh cuộn */
+::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Màu của thanh cuộn khi di chuột qua */
+}
+
+/* Thiết lập cho thanh cuộn track (phần nền của thanh cuộn) */
+::-webkit-scrollbar-track {
+    background-color: #333; /* Màu nền của track */
+    border-radius: 6px; /* Độ cong của góc track */
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); /* Đổ bóng cho track */
+}
+
+/* Thiết lập cho thanh cuộn track khi di chuột qua */
+::-webkit-scrollbar-track:hover {
+    background-color: #444; /* Màu nền của track khi di chuột qua */
+}
+
+/* Thiết lập cho nút cuộn cuối cùng khi cuộn xuống cuối trang */
+::-webkit-scrollbar-corner {
+    background-color: transparent; /* Màu của góc thanh cuộn */
+}
+
+.image-grid.large .image-item.hidden {
+    display: none; /* Ẩn các hình ảnh từ hình thứ 12 trở đi */
+}
+
+.show-more-btn {
+    display: none; /* Initially hidden */
+    margin: 10px auto;
+    padding: 10px 20px;
+    border: none;
+    background-color: transparent;
+    color: #6667ab;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 4px;
+    transition: background-color 0.3s, transform 0.3s, opacity 0.3s; /* Apply transitions to background-color, transform, and opacity */
+    z-index: 1;
+}
+
+.show-more-btn:hover {
+    transform: translateY(-3px); /* Example transform effect on hover */
+    background-color: #4c4d81; /* Example background color change on hover */
+    opacity: 0.8; /* Example opacity change on hover */
+}
+
+.image-grid.large.show-all .image-item.hidden {
+    display: inline-block; /* Hiển thị các hình ảnh từ hình thứ 12 trở đi khi nhấp vào "Show More" */
+}
+
+.image-grid {
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    max-height: 600px; /* Cao độ tối đa ban đầu của container */
+    overflow: hidden;
+    transition: max-height 0.3s ease; /* Hiệu ứng transition */
+}
+
+.image-grid .image {
+    position: relative;
+    overflow: hidden;
+    background-color: #f0f0f0; /* Màu nền của khung ánh sáng */
+    border-radius: 8px; /* Bo góc */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+    transition: transform 0.5s ease, opacity 0.5s ease; /* Hiệu ứng transition */
+}
+
+.image-grid .image.show {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.image-grid .image.hidden {
+    transform: scale(0.5);
+    opacity: 0;
+}
+
+.viewport {
+    overflow: hidden;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+select { display: none; }
+
+.dropdown {
+  background-repeat: repeat-x;
+  bottom: 0px;
+  margin-bottom: 15px;
+  right: 0px;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#40FFFFFF', endColorstr='#00FFFFFF', GradientType=0);
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.0075);
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  float: left;
+  font-size: 14px;
+  font-weight: normal;
+  height: 42px;
+  line-height: 40px;
+  outline: none;
+  padding-left: 18px;
+  padding-right: 30px;
+  position: relative;
+  text-align: left !important;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  white-space: nowrap;
+  width: auto;
+}
+
+.dropdown:focus { background-color: white; }
+
+.dropdown:hover { background-color: lightgray; }
+
+.dropdown:active, .dropdown.open {
+  background-color: white  !important;
+  border-color: black;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05) inset;
+}
+
+.dropdown:after {
+  height: 0;
+  width: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #777;
+  -webkit-transform: rotate(90deg); /* Ban đầu xoay -90 độ để hướng qua trái */
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  -webkit-transition: all 0.125s ease-in-out;
+  transition: all 0.125s ease-in-out;
+  content: '';
+  display: block;
+  margin-top: -2px;
+  pointer-events: none;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+}
+
+.dropdown.open:after {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+.dropdown.open .list {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.dropdown.open .option { cursor: pointer; }
+
+.dropdown.wide { width: 100%; }
+
+.dropdown.wide .list {
+  left: 0 !important;
+  right: 0 !important;
+}
+
+.dropdown .list {
+  box-sizing: border-box;
+  -webkit-transition: all 0.15s cubic-bezier(0.25, 0, 0.25, 1.75), opacity 0.1s linear;
+  transition: all 0.15s cubic-bezier(0.25, 0, 0.25, 1.75), opacity 0.1s linear;
+  -webkit-transform: scale(0.75);
+  -ms-transform: scale(0.75);
+  transform: scale(0.75);
+  -webkit-transform-origin: 50% 0;
+  -ms-transform-origin: 50% 0;
+  transform-origin: 50% 0;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.09);
+  background-color: white;
+  border-radius: 6px;
+  margin-top: 4px;
+  padding: 3px 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 999;
+}
+
+.dropdown .list:hover .option:not(:hover) { background-color: transparent !important; }
+
+ul {
+    list-style-type: none; /* Đây là giá trị mặc định */
+  }
+
+.dropdown .option {
+  cursor: default;
+  font-weight: 400;
+  line-height: 40px;
+  outline: none;
+  padding: 5px;
+  padding-right: 30px;
+  margin-left: -25px;
+  margin-right: 15px;
+  text-align: left;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.dropdown .option:hover, .dropdown .option:focus { 
+    background-color: lightgray !important;
+    border-radius: 6px;
+}
+
+.dropdown .option.selected { font-weight: 600; }
+
+.dropdown .option.selected:focus { background: white; }
+
+
+.container {
+  margin: 150px auto 0;
+  max-width: 120px;
+}
+
+.by {
+  bottom: 12px;
+  color: #aaa;
+  font-size: 12px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+}
+
+.by a {
+  color: #fff;
+  text-decoration: none;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.by a:hover { color: #666; }
+
+.username, .nav-link {
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    margin-top: 5px;
+}
+
+.username:hover, .nav-link:hover {
+    color: #6667ab;
+}
+
+.username {
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+.alert-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #515151;
+    border: 1px solid #020202;
+    padding: 20px;  
+    z-index: 1000;
+    display: none;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.alert-box.show {
+    display: block;
+}
+
+.alert-box p {
+    margin: 0;
+}
+
+.alert-box button {
+    margin-top: 10px;
+    background-color: #ffffff;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
