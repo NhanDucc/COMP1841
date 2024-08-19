@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact</title>
-    <link rel="stylesheet" href="css\main.css">
+    <link rel="stylesheet" href="css\mainn.css">
 </head>
 <body>
-<header>
+    <header>
         <div class="header-container">
             <nav>
                 <a href="index.php" class="nav-link">
@@ -21,7 +21,7 @@
     <main>
         <section class="contact-info">
             <h2>Contact Us</h2>
-            <form action="send_email.php" method="post">
+            <form method="post">
                 <label for="name">Full Name</label>
                 <input type="text" id="name" name="name" required>
             
@@ -30,6 +30,10 @@
 
                 <label for="message">Message</label>
                 <textarea id="message" name="message" placeholder='Enter your message here...' col required></textarea><br />
+                <?php if (isset($_SESSION['message'])): ?>
+                    <p class="message"><?php echo $_SESSION['message']; ?></p>
+                    <?php unset($_SESSION['message']); ?>
+                <?php endif; ?>
 
                 <input type="submit" value="Send Message">
             </form>
