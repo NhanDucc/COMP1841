@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Signup</title>
-    <link rel="stylesheet" href="css\login-signup.css">
+    <link rel="stylesheet" href="css\log-sign.css">
 </head>
 <body class="login-body">
     <main class="login-main">
@@ -40,14 +40,18 @@
                         </svg>
                     </span>
                 </div>
-            <?php if (!empty($error_message)): ?>
-                <div class="error-message"><?php echo $error_message; ?></div>
-            <?php endif; ?>
+                <?php
+                    if (isset($_SESSION['error'])) {
+                        echo '<p class="error">' . $_SESSION['error'] . '</p>';
+                        unset($_SESSION['error']);
+                    }
+                ?>
             <div class="btn-ctn">
-                <button type="submit">Create a account</button>
+                <button type="submit">Create an account</button>
             </div>
         </form>
         <p>Already have an account? <a href="login.php">Log in</a></p>
     </main>
+    <script src= 'script.js'></script>
 </body>
 </html>
