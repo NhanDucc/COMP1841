@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
-    <link rel="stylesheet" href="css\main.css">
+    <link rel="stylesheet" href="css\mainn.css">
 </head>
 <body onload="init()">
 <header>
@@ -21,15 +20,27 @@
     </header>   
     <main>
         <section class="profile-section">
-            <h2>Edit Your Profile</h2>
+            <h2>Your Profile</h2>
             <form method="post" action="profile.php" id="profile-form">
                 <div class="form-group">
                     <label for="username">Username:</label>
                     <input type="text" id="username" name="username" value="" placeholder="<?php echo htmlspecialchars($_SESSION['username']); ?>" disabled>
                 </div>
                 <div class="form-group">
+                    <label for="email">Full Name</label>
+                    <input type="text" id="fullname" name="fullname" placeholder="<?php echo isset($user['fullname']) ? htmlspecialchars($user['fullname']) : ''; ?>">
+                </div>
+                <div class="form-group">
+                    <label for="email">Phone Number</label>
+                    <input type="text" id="phonenumber" name="phonenumber" placeholder="<?php echo isset($user['phonenumber']) ? htmlspecialchars($user['phonenumber']) : ''; ?>">
+                </div>
+                <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="<?php echo isset($user['email']) ? htmlspecialchars($user['email']) : ''; ?>">
+                </div>
+                <div class="form-group">
+                    <label for="email">Gender</label>
+                    <input type="text" id="gender" name="gender" placeholder="<?php echo isset($user['gender']) ? htmlspecialchars($user['gender']) : ''; ?>">
                 </div>
                 <div class="form-group">
                     <label for="password">New Password:</label>
@@ -44,32 +55,27 @@
         <h2>Your Questions</h2>
         <section class="questions-list">
             <div id="questions-container">
-            <?php foreach ($questions as $question): ?>
-    <div class="question">
-        <h3><?php echo htmlspecialchars($question['module_name']); ?></h3><br />
-        <p><?php echo htmlspecialchars($question['question_text']); ?></p>
-        <?php if (!empty($question['images'])): ?>
-            <?php $images = explode(',', $question['images']); ?>
-            <?php if (count($images) === 1): ?>
-                <div class="image-single">
-                    <img src="<?php echo htmlspecialchars($images[0]); ?>" alt="Question Image">
-                </div>
-            <?php else: ?>
-                <div class="image-grid large">
-                    <?php foreach ($images as $image): ?>
-                        <div class="image-item">
-                            <img src="<?php echo htmlspecialchars($image); ?>" alt="Question Image">
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-            <?php endif; ?>
-        <?php endif; ?>
-                        <p><em>Posted on: <?php echo htmlspecialchars($question['time_post']); ?></em></p>
-                        <div class="question-actions">
-                            <a href="editpost.php?id=<?php echo $question['id']; ?>">Edit</a>
-                            <a href="deletepost.php?id=<?php echo $question['id']; ?>">Delete</a>
-                        </div>
-                        <button class="show-more-btn">Show more (<span class="hidden-count"></span>)</button>
+                <?php foreach ($questions as $question): ?>
+                    <div class="question">
+                        <h1><?php echo htmlspecialchars($question['module_name']); ?></h1><br />
+                        <p class='question-show'>Question: <?php echo htmlspecialchars($question['question_text']); ?></p>
+                        <?php if (!empty($question['images'])): ?>
+                            <?php $images = explode(',', $question['images']); ?>
+                            <?php if (count($images) === 1): ?>
+                                <div class="image-single">
+                                    <img src="<?php echo htmlspecialchars($images[0]); ?>" alt="Question Image">
+                                </div>
+                            <?php else: ?>
+                                <div class="image-grid large">
+                                    <?php foreach ($images as $image): ?>
+                                        <div class="image-item">
+                                            <img src="<?php echo htmlspecialchars($image); ?>" alt="Question Image">
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                        <p><em class='posted'>Posted on: <?php echo htmlspecialchars($question['time_post']); ?></em></p>
                     </div>
                 <?php endforeach; ?>
             </div>
