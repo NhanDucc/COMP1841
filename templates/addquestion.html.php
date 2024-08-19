@@ -1,13 +1,22 @@
+<?php
+try{
+$sql = 'SELECT id, module_name FROM module';
+    $result = $pdo->query($sql);
+    $modules = $result->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "Lỗi khi thực thi câu lệnh SQL: " . $e->getMessage();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Question</title>
-    <link rel="stylesheet" href="css\main.css">
+    <link rel="stylesheet" href="css\mainn.css">
 </head>
 <body>
-<header>
+    <header>
         <div class="header-container">
             <nav>
                 <a href="index.php" class="nav-link">
@@ -24,11 +33,9 @@
           <h2>Post a Question</h2>
             <div class="form-group">
                 <select id="module" name="module">
-                    <option value="1">Programming Foundations</option>
-                    <option value="2">Principles of Software Engineering</option>
-                    <option value="3">Systems Development</option>
-                    <option value="4">Mathematics for Computer Science</option>
-                    <option value="5">Principles of Security</option>
+                  <?php foreach ($modules as $module): ?>
+                    <option value="<?php echo $module['id']; ?>"><?php echo htmlspecialchars($module['module_name']); ?></option>
+                  <?php endforeach; ?>
                 </select>
             </div>
             <textarea id="question" name="question" placeholder="Type your question here.." required></textarea>
