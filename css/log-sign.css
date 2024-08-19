@@ -77,7 +77,7 @@ label{
     color: black;
 }
 
-.error-message{
+.error {
     color: red;
     font-weight: bold;
     font-size: 20px;
