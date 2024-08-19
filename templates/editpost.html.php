@@ -1,10 +1,19 @@
+<?php
+try{
+$sql = 'SELECT id, module_name FROM module';
+    $result = $pdo->query($sql);
+    $modules = $result->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "Lỗi khi thực thi câu lệnh SQL: " . $e->getMessage();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Post</title>
-    <link rel="stylesheet" href="css\main.css">
+    <link rel="stylesheet" href="css\mainn.css">
 </head>
 <body>
 <header>
@@ -28,11 +37,9 @@
                             </div>
                             <div class="container">
                                 <select id="module" name="module" class="module-select" required>   
-                                    <option value="1" <?php echo ($question['module_id'] == 1) ? 'selected' : ''; ?>>Programming Foundations</option>
-                                    <option value="2" <?php echo ($question['module_id'] == 2) ? 'selected' : ''; ?>>Principles of Software Engineering</option>
-                                    <option value="3" <?php echo ($question['module_id'] == 3) ? 'selected' : ''; ?>>Systems Development</option>
-                                    <option value="4" <?php echo ($question['module_id'] == 4) ? 'selected' : ''; ?>>Mathematics for Computer Science</option>
-                                    <option value="5" <?php echo ($question['module_id'] == 5) ? 'selected' : ''; ?>>Principles of Security</option>
+                                  <?php foreach ($modules as $module): ?>
+                                    <option value="<?php echo $module['id']; ?>"><?php echo htmlspecialchars($module['module_name']); ?></option>
+                                  <?php endforeach; ?>
                                 </select>
                             <ul id="moduleOptions" class="module-options">
                             </div>
@@ -40,7 +47,7 @@
                                 <textarea id="question" name="question" placeholder="Type your question here.." required><?php echo htmlspecialchars($question['question_text']); ?></textarea>
                             </div>
                             <div class="form-group">
-                            <label for="images" class="custom-file-input">Choose File</label>
+                            <label for="images" class="custom-file-input">Choose Image</label>
                             <input type="file" id="images" name="images[]" accept="image/*" multiple style="display: none;">
                                 <div id="preview-container">
                                     <!-- Display existing images -->
